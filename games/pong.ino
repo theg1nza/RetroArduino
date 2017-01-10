@@ -1,23 +1,22 @@
 /********
- * Arduino Pong
- * By Pete Lamonica
- *  modified by duboisvb
- *  updated by James Bruce (http://www.makeuseof.com/tag/author/jbruce
- * A simple implementation of Pong on the Arduino using a TV for output.
- *
- */
- 
- 
-#include <TVout.h>
+* Arduino Pong
+* By Pete Lamonica
+*  modified by duboisvb
+*  updated by James Bruce (http://www.makeuseof.com/tag/author/jbruce
+* A simple implementation of Pong on the Arduino using a TV for output.
+*
+*/
+
+#include <TVout.h> //Include the TVout.h library. Download at https://github.com/Avamander/arduino-tvout.
 #include <fontALL.h>
 
-#define WHEEL_ONE_PIN 0 //analog
-#define WHEEL_TWO_PIN 1 //analog
+#define WHEEL_ONE_PIN 0 //analog controller 1
+#define WHEEL_TWO_PIN 1 //analog controller 2
 #define BUTTON_ONE_PIN 2 //digital to start game
-#define BUTTON_TWO_PIN 3 //digital to reset and go back to main menu
- 
-#define PADDLE_HEIGHT 14
-#define PADDLE_WIDTH 1
+// #define BUTTON_TWO_PIN 3 //digital to reset and go back to main menu
+
+#define PADDLE_HEIGHT 14 //height of the paddle
+#define PADDLE_WIDTH 1 //width of the paddle
  
 #define RIGHT_PADDLE_X (TV.hres()-4)
 #define LEFT_PADDLE_X 2
@@ -32,7 +31,7 @@
 #define RIGHT_SCORE_X (TV.hres()/2+10)
 #define SCORE_Y 4
  
-#define MAX_Y_VELOCITY 6
+#define MAX_Y_VELOCITY 14
 #define PLAY_TO 7
  
 #define LEFT 0
@@ -58,13 +57,15 @@ int rightPlayerScore = 0;
  
 int frame = 0;
 int state = IN_MENU;
- 
+
+
+
 void processInputs() {
   wheelOnePosition = analogRead(WHEEL_ONE_PIN);
   // delay(50);
   wheelTwoPosition = analogRead(WHEEL_TWO_PIN);
  // delay(50);
-   button1Status = (digitalRead(BUTTON_ONE_PIN));
+  button1Status = (digitalRead(BUTTON_ONE_PIN));
   
  //  button2Status = (digitalRead(BUTTON_TWO_PIN) == LOW);
    if ((button1Status == 0)&& (state == GAME_OVER))
