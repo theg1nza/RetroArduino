@@ -2,7 +2,8 @@
 #define  d     3400    // 294 Hz 
 #define  e     3038    // 329 Hz 
 #define  f     2864    // 349 Hz 
-#define  g     2550    // 392 Hz 
+#define  g     2550    // 392 Hz
+#define  h     2409    // 415 Hz
 #define  a     2272    // 440 Hz 
 #define  b     2028    // 493 Hz 
 #define  C     1912    // 523 Hz 
@@ -10,6 +11,7 @@
 #define  E     1517    // 659 Hz
 #define  F     1432    // 698 Hz
 #define  G     1275    // 784 Hz
+#define  H     1204    // 830 Hz
 #define  A     1136    // 880 Hz
 // Define a special note, 'R', to represent a rest
 #define  R     0
@@ -30,12 +32,12 @@ void setup() {
 // MELODY and TIMING  =======================================
 //  melody[] is an array of notes, accompanied by beats[], 
 //  which sets each note's relative length (higher #, longer note) 
-int melody[] = {  E,  b, C, D,  C,  b, a,  a, C, E,  D, C, b,  C, D,  E,  C,  a,  a,  R, D, F,  A,  G, F,  E,  C, E,  D, C, b,  b, C, D,  E,  C,  a , a,  R};
-int beats[]  = { 16,  8, 8, 16, 8,  8, 16, 8, 8, 16, 8, 8, 24, 8, 16, 16, 16, 16, 32, 24, 16, 8, 16, 8, 8, 24, 8, 16, 8, 8, 16, 8, 8, 16, 16, 16, 16, 32, 16}; 
+int melody[] = {  E,  b, C, D,  C,  b, a,  a, C, E,  D, C, b,  b, C, D,  E,  C,  a,  a,  R, D, F,  A,  G, F, E,  C, E,  D, C, b,  b, C, D,  E,  C,  a , a,  R,  E,  C,  D,  b,  C,  C,  b,  a,  h,  E,  C,  D,  b,  C,  C,  E,  A,  H, E,   b, C, D,  C,  b, a,  a, C, E,  D, C, b,  C, D,  E,  C,  a,  a,  R, D, F,  A,  G, F, E,  C, E,  D, C, b,  b, C, D,  E,  C,  a , a};
+int beats[]  = { 16,  8, 8, 16, 8,  8, 16, 8, 8, 16, 8, 8, 16, 8, 8, 16, 16, 16, 16, 48, 8, 16, 8, 16, 8, 8, 24, 8, 16, 8, 8, 16, 8, 8, 16, 16, 16, 16, 32, 16, 32, 32, 32, 32, 16, 16, 16, 16, 64, 32, 32, 32, 32, 16, 16, 16, 16, 64, 16, 8, 8, 16, 8,  8, 16, 8, 8, 16, 8, 8, 24, 8, 16, 16, 16, 16, 48, 8, 16, 8, 16, 8, 8, 24, 8, 16, 8, 8, 16, 8, 8, 16, 16, 16, 16, 32}; 
 int MAX_COUNT = sizeof(melody) / 2; // Melody length, for looping.
 
 // Set overall tempo
-long tempo = 50000;
+long tempo = 10000;
 // Set length of pause between notes
 int pause = 1000;
 // Loop variable to increase Rest length
