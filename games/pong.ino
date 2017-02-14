@@ -5,6 +5,9 @@
 *  updated by James Bruce (http://www.makeuseof.com/tag/author/jbruce
 * A simple implementation of Pong on the Arduino using a TV for output.
 *
+* Commented and debugged by Jean-Simon Desjardins, François-Nicolas Gitzhofer and Charles Wu
+* Séminaire de Sherbrooke
+*
 */
 
 #include <TVout.h> //Include the TVout.h library. Download at https://github.com/Avamander/arduino-tvout.
@@ -49,8 +52,8 @@ int rightPaddleY = 0;
 int leftPaddleY = 0;
 unsigned char ballX = 0;
 unsigned char ballY = 0;
-char ballVolX = 2;
-char ballVolY = 2;
+char ballVolX = 2; //max horizontal ball speed
+char ballVolY = 2; //max vertical ball speed (something else than 2 makes 1 or 2 paddles not have hitboxes)
  
 int leftPlayerScore = 0;
 int rightPlayerScore = 0;
@@ -194,24 +197,34 @@ void drawMenu() {
   TV.select_font(font4x6);
   state = IN_GAMEA;
 }
+
+
+
+
+
+
+
+
+
+
  
 void setup()  {
     //Serial.begin(9600);
   x=0;
   y=0;
-  TV.begin(_NTSC);       //for devices with only 1k sram(m168) use TV.begin(_NTSC,128,56)
+  TV.begin(_NTSC,128,56);       //for devices with only 1k sram(m168) use TV.begin(_NTSC,128,56)
  
   ballX = TV.hres() / 2;
   ballY = TV.vres() / 2;
  
-//  pinMode(BUTTON_ONE_PIN, INPUT);      // sets the digital pin as output
+  pinMode(BUTTON_ONE_PIN, INPUT);      // sets the digital pin as input
 }
+
+
  
 void loop() {
   processInputs();
- 
 
- 
  
   if(state == IN_MENU) {
     drawMenu();
