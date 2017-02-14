@@ -2,11 +2,30 @@
 * Arduino Pong
 * By Pete Lamonica
 *  modified by duboisvb
-*  updated by James Bruce (http://www.makeuseof.com/tag/author/jbruce
+*  updated by James Bruce (http://www.makeuseof.com/tag/author/jbruce)
 * A simple implementation of Pong on the Arduino using a TV for output.
 *
 * Commented and debugged by Jean-Simon Desjardins, François-Nicolas Gitzhofer and Charles Wu
 * Séminaire de Sherbrooke
+*
+* Notes:
+* - You will need to plug-in 2 potetimeters in order for this to work. Otherwise, you
+*   might have the 2 paddles moving off the same potentiometer.
+*
+*
+* Where to plug what:
+* - Potentiometers for the paddles: Analog 0 and Analog 1
+* - Sync signal: Digital 9
+* - Video signal: Digital 7
+* - Sound signal: Digital 11
+* - Start button: Digital 2 
+* - Reset button: Digital 3
+*
+*
+* Documentation:
+* - TVOut libs (http://playground.arduino.cc/Main/TVout)
+* 
+*
 *
 */
 
@@ -16,7 +35,7 @@
 #define WHEEL_ONE_PIN 0 //analog controller 1
 #define WHEEL_TWO_PIN 1 //analog controller 2
 #define BUTTON_ONE_PIN 2 //digital to start game
-// #define BUTTON_TWO_PIN 3 //digital to reset and go back to main menu
+#define BUTTON_TWO_PIN 3 //digital to reset and go back to main menu
 
 #define PADDLE_HEIGHT 14 //height of the paddle
 #define PADDLE_WIDTH 1 //width of the paddle
@@ -37,8 +56,8 @@
 #define MAX_Y_VELOCITY 14
 #define PLAY_TO 7
  
-#define LEFT 0
-#define RIGHT 1
+#define LEFT 0 //set to 2 if not working
+#define RIGHT 1 //set to 3 if not working
  
 TVout TV;
 unsigned char x,y;
