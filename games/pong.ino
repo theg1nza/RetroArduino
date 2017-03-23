@@ -37,7 +37,7 @@
 #define BUTTON_ONE_PIN 2 //digital to start game
 #define BUTTON_TWO_PIN 3 //digital to reset and go back to main menu
 
-#define PADDLE_HEIGHT 14 //height of the paddle
+#define PADDLE_HEIGHT 7 //height of the paddle
 #define PADDLE_WIDTH 1 //width of the paddle
  
 #define RIGHT_PADDLE_X (TV.hres()-4)
